@@ -12,7 +12,7 @@ The analysis ships in three forms:
 
 ## Overview
 
-The broader Financing for Development ([FFD](https://financing.desa.un.org/ffd4)) agenda has long called for better interoperability between development-finance data systems, lighter reporting burdens on partner countries, and improved transparency along the aid delivery chain. The **Global Partnership for Effective Development Cooperation (GPEDC)** sits inside that broader effort, with its own monitoring framework tracking the effectiveness of international development cooperation across whole-of-society engagement, country-systems use, transparency, and leaving-no-one-behind.
+The broader Financing for Development ([FFD](https://financing.desa.un.org/ffd4)) agenda has called for better interoperability between development-finance data systems, lighter reporting burdens on partner countries, and improved transparency along the aid delivery chain. The **Global Partnership for Effective Development Cooperation (GPEDC)** sits inside that broader effort and reaffirmed within the 2025 FFD outcome document -- it's monitoring framework tracks the effectiveness of international development cooperation across whole-of-society engagement, country-systems use, transparency, and leaving-no-one-behind.
 
 A number of practical workstreams are pushing in the same direction. They show up directly in the GPEDC framework:
 
