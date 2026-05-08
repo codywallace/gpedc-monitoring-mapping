@@ -28,6 +28,12 @@ def navbar() -> dbc.Navbar:
                         dbc.NavLink(
                             "Methodology ↗", href="/docs/", external_link=True, target="_blank"
                         ),
+                        dbc.NavLink(
+                            "GitHub ↗",
+                            href="https://github.com/codywallace/gpedc-monitoring-mapping",
+                            external_link=True,
+                            target="_blank",
+                        ),
                     ],
                     pills=True,
                     className="ms-auto",

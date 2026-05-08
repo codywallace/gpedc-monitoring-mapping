@@ -83,6 +83,12 @@ html_static_path = ["_static"]
 html_theme_options = {
     "sidebar_hide_name": False,
     "navigation_with_keys": True,
+    # Per-page "View source" / "Edit this page" links at the top of every
+    # rendered page. Furo reads source_repository + source_branch + source_directory
+    # to construct the GitHub URL for each .md file.
+    "source_repository": "https://github.com/codywallace/gpedc-monitoring-mapping/",
+    "source_branch": "main",
+    "source_directory": "docs/",
     "footer_icons": [
         {
             "name": "GitHub",

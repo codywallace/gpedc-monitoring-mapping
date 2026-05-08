@@ -149,12 +149,12 @@ def build_readme(wb: Workbook) -> None:
         ("h2", "Also available as a web app"),
         (
             "p",
-            "The same content — indicator mapping, reporting-org readiness heatmap, CRS×IATI interoperability rates, untying & subcontracts view, and the policy recommendations — is also available as an interactive Plotly Dash web app under app/ in the repository. Run with `uv run python scripts/run_app.py` (default: http://127.0.0.1:8050). The app reads the same parquet outputs the notebooks produce, so it always agrees with this workbook.",
+            "Live at https://gpedc-iati-mapping.codywallace.dev/indicator-mapping — the same content as this workbook (indicator mapping, reporting-org readiness heatmap, CRS×IATI interoperability rates, untying & subcontracts view, and the policy recommendations) rendered as an interactive Plotly Dash web app. The app reads the same parquet outputs the notebooks produce, so it always agrees with this workbook. Source under app/ in the repository — clone and `uv run python scripts/run_app.py` to run locally on http://127.0.0.1:8050.",
         ),
         ("h2", "Methodology documentation"),
         (
             "p",
-            "A separate Sphinx documentation site under docs/ explains the methodology behind every metric — data sources (IATI bulk-data service, registry indices, the GPEDC donor mapping); how reporting-org readiness is calculated step-by-step; the OECD-DAC pipeline reference for the CRS×IATI interoperability metric; and the editorial basis for each feasibility category. Build with `uv run python scripts/build_docs.py`; once the web app is running it serves the docs at http://127.0.0.1:8050/docs/.",
+            "A separate Sphinx documentation site explains the methodology behind every metric — data sources (IATI bulk-data service, registry indices, the GPEDC donor mapping); how reporting-org readiness is calculated step-by-step; the OECD-DAC pipeline reference for the CRS×IATI interoperability metric; and the editorial basis for each feasibility category. Live at https://gpedc-iati-mapping.codywallace.dev/docs/. Source under docs/ in the repository — build locally with `uv run python scripts/build_docs.py`.",
         ),
         ("h2", "Sheets"),
         (
@@ -189,10 +189,10 @@ def build_readme(wb: Workbook) -> None:
             "p",
             "  • 8_Notebook reproduction — pointers from each empirical sheet back to the notebook that produced it.",
         ),
-        ("h2", "More on how this is built and how to reproduce it"),
+        ("h2", "Source code and reproduction"),
         (
             "p",
-            "See the project README on GitHub for installation, the public Python API (`gpedc_iati`), and full reproduction instructions: https://github.com/codywallace/gpedc-monitoring-mapping",
+            "Public repository: https://github.com/codywallace/gpedc-monitoring-mapping — full source for the analysis pipeline, the Dash app, and the methodology docs. Includes installation steps, the public Python API (`gpedc_iati`), and instructions for regenerating this workbook from raw IATI publisher data. MIT-licensed.",
         ),
         ("h2", "Reference documents"),
         (
