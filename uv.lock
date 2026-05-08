@@ -504,9 +504,7 @@ dependencies = [
     { name = "dash" },
     { name = "dash-bootstrap-components" },
     { name = "gunicorn" },
-    { name = "jupyter" },
     { name = "lxml" },
-    { name = "notebook" },
     { name = "openpyxl" },
     { name = "pandas" },
     { name = "plotly", extra = ["express"] },
@@ -517,7 +515,9 @@ dependencies = [
 [package.dev-dependencies]
 dev = [
     { name = "furo" },
+    { name = "jupyter" },
     { name = "myst-parser" },
+    { name = "notebook" },
     { name = "pre-commit" },
     { name = "pytest" },
     { name = "ruff" },
@@ -530,9 +530,7 @@ requires-dist = [
     { name = "dash", specifier = ">=4.1.0" },
     { name = "dash-bootstrap-components", specifier = ">=2.0.4" },
     { name = "gunicorn", specifier = ">=25.3.0" },
-    { name = "jupyter", specifier = ">=1.1.1" },
     { name = "lxml", specifier = ">=6.1.0" },
-    { name = "notebook", specifier = ">=7.5.6" },
     { name = "openpyxl", specifier = ">=3.1.5" },
     { name = "pandas", specifier = ">=3.0.2" },
     { name = "plotly", extras = ["express"], specifier = ">=6.7.0" },
@@ -543,7 +541,9 @@ requires-dist = [
 [package.metadata.requires-dev]
 dev = [
     { name = "furo", specifier = ">=2025.12.19" },
+    { name = "jupyter", specifier = ">=1.1.1" },
     { name = "myst-parser", specifier = ">=5.0.0" },
+    { name = "notebook", specifier = ">=7.5.6" },
     { name = "pre-commit", specifier = ">=4.0.1" },
     { name = "pytest", specifier = ">=9.0.3" },
     { name = "ruff", specifier = ">=0.15.11" },

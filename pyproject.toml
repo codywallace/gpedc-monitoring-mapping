@@ -8,9 +8,7 @@ dependencies = [
     "dash>=4.1.0",
     "dash-bootstrap-components>=2.0.4",
     "gunicorn>=25.3.0",
-    "jupyter>=1.1.1",
     "lxml>=6.1.0",
-    "notebook>=7.5.6",
     "openpyxl>=3.1.5",
     "pandas>=3.0.2",
     "plotly[express]>=6.7.0",
@@ -26,9 +24,16 @@ build-backend = "hatchling.build"
 packages = ["src/gpedc_iati"]
 
 [dependency-groups]
+# Dev tooling — lint, format, test, docs build, pre-commit hooks, plus the
+# Jupyter stack used by `scripts/run_notebooks.py` for the offline data-prep
+# step. These are NOT runtime deps for the Dash app — keeping them out of
+# the runtime export keeps the production image small and the pip-audit
+# scope tight.
 dev = [
     "furo>=2025.12.19",
+    "jupyter>=1.1.1",
     "myst-parser>=5.0.0",
+    "notebook>=7.5.6",
     "pre-commit>=4.0.1",
     "pytest>=9.0.3",
     "ruff>=0.15.11",
