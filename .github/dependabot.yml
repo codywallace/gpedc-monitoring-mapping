@@ -1,0 +1,33 @@
+version: 2
+updates:
+  # GitHub Actions — keep workflow action versions current.
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 5
+    labels:
+      - "dependencies"
+      - "ci"
+
+  # Python — proposes bumps to pyproject.toml constraints. uv.lock is NOT
+  # updated automatically; after merging a Dependabot PR, run `uv sync` and
+  # commit the regenerated lock.
+  - package-ecosystem: "pip"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 5
+    labels:
+      - "dependencies"
+      - "python"
+
+  # Docker — base image bumps for the Dockerfile (python:3.13-slim, uv).
+  - package-ecosystem: "docker"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 5
+    labels:
+      - "dependencies"
+      - "docker"

@@ -1,0 +1,52 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+# Per-run scratch
+.tmp/
+logs/
+.ipynb_checkpoints/
+
+# Sphinx-built documentation (built artefact; source under docs/ is committed)
+docs/_build/
+
+# Local data folder (donor mapping, GPEDC published results, IATI bulk-data
+# mirror) — placed locally per-environment, never committed.
+data/
+
+# Reference documents (some are not for public distribution).
+documents/
+
+# Analysis notebooks — kept locally for the maintainer's record but not
+# published. The reproducible pipeline (scripts/scan_donors.py +
+# scripts/run_notebooks.py + build_mapping.py) covers the same logic in
+# script form. Output cells in .ipynb files often retain sample rows and
+# local file paths.
+notebooks/
+
+# Office-app lock files.
+~$*.xlsx
+
+# Local secrets (TUNNEL_TOKEN for Cloudflare Tunnel, any future API keys).
+# `.env.example` is committed as a template; the real .env never is.
+.env
+.env.*
+!.env.example
+
+# Local Claude / IDE state.
+.claude/
+
+# Operational runbook (deploy specifics, droplet layout, recovery
+# procedures) — kept on the maintainer's laptop only, not published.
+MANIFEST.md
+
+# Deploy script — references project-specific droplet alias + path.
+# The deployment pattern is documented in MANIFEST.md.
+scripts/deploy_droplet.sh

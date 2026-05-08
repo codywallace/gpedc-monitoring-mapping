@@ -1,0 +1,23 @@
+# Local-dev override — expose the app on 127.0.0.1:8050 and skip the tunnel.
+#
+# Usage:
+#   docker compose -f docker-compose.yml -f docker-compose.local.yml up --build
+#
+# Loopback-only binding means the app is reachable from your laptop's browser
+# but not from the LAN. Combine with docker-compose.yml's read_only +
+# no-new-privileges + cap_drop posture for a hardened local container.
+
+services:
+  app:
+    ports:
+      - "127.0.0.1:8050:8050"
+
+  # Disable the tunnel locally — `replicas: 0` doesn't actually work in
+  # plain compose (it's a swarm field), so we override the command to a no-op
+  # and rely on `restart: "no"` to keep it from looping.
+  cloudflared:
+    command: ["true"]
+    restart: "no"
+    environment:
+      - TUNNEL_TOKEN=unused-locally
+    depends_on: []
