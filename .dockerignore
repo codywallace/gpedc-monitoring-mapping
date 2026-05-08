@@ -1,0 +1,33 @@
+# Anything not explicitly COPY'd in the Dockerfile is excluded by virtue of
+# the Dockerfile structure, but listing common heavies here speeds up
+# `docker build` by trimming the build context size.
+
+# Local environment / caches
+.venv/
+__pycache__/
+**/__pycache__/
+*.py[oc]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# Heavy data not needed inside the container
+data/
+documents/
+logs/
+notebooks/
+.ipynb_checkpoints/
+
+# Source-control / IDE
+.git/
+.github/
+.gitignore
+.gitattributes
+.idea/
+.vscode/
+.claude/
+
+# Local artefacts that aren't required at runtime
+*.md
+!README.md
+docs/_build/doctrees/

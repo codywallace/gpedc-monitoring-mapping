@@ -1,0 +1,65 @@
+# Docker Compose definition for the GPEDC × IATI mapping app.
+#
+# Default deployment posture (droplet): Cloudflare Tunnel only.
+#   - The `app` container is reachable inside the compose network as `app:8050`.
+#   - `cloudflared` connects to Cloudflare's edge and forwards a public
+#     hostname (configured in the Cloudflare dashboard) to `http://app:8050`.
+#   - Port 8050 is NOT mapped to the host, so the droplet has no extra inbound
+#     surface area beyond SSH.
+#
+# Required: a `.env` file beside this one containing
+#   TUNNEL_TOKEN=<token from Cloudflare dashboard → Zero Trust → Networks →
+#                 Tunnels → Create tunnel → Connector token>
+#
+# Local dev (no tunnel — temporarily expose the port to localhost):
+#   docker compose -f docker-compose.yml -f docker-compose.local.yml up --build
+#   …or just:  docker compose run --service-ports app
+#
+# View logs:
+#   docker compose logs -f app
+#
+# Stop:
+#   docker compose down
+
+services:
+  app:
+    build: .
+    image: gpedc-iati:latest
+    container_name: gpedc-iati
+    restart: unless-stopped
+    # No `ports:` — ingress is the cloudflared sidecar. `expose` advertises
+    # 8050 to other services on the compose network only.
+    expose:
+      - "8050"
+    read_only: true
+    tmpfs:
+      - /tmp:size=64m
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    healthcheck:
+      test: ["CMD", "python", "-c",
+             "import urllib.request, sys; sys.exit(0) if urllib.request.urlopen('http://localhost:8050/healthz', timeout=5).status == 200 else sys.exit(1)"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 20s
+
+  # Cloudflare Tunnel sidecar. Pulls a tunnel token from .env and forwards
+  # whatever public hostname is configured in the Cloudflare dashboard to
+  # http://app:8050. No inbound ports need to be open on the droplet.
+  cloudflared:
+    image: cloudflare/cloudflared:latest
+    container_name: gpedc-cloudflared
+    restart: unless-stopped
+    command: tunnel --no-autoupdate run
+    environment:
+      - TUNNEL_TOKEN=${TUNNEL_TOKEN:?TUNNEL_TOKEN missing — populate .env from .env.example}
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    depends_on:
+      app:
+        condition: service_healthy
