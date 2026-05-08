@@ -16,7 +16,7 @@
 # Build:    docker build -t gpedc-iati .
 # Run:      docker run --rm -p 8050:8050 gpedc-iati
 
-FROM python:3.13-slim
+FROM python:3.14-slim
 
 # Unprivileged runtime user. Build steps stay as root so `uv sync` can write
 # /app/.venv; we chown + switch to `app` once everything is in place.
